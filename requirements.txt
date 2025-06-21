@@ -1,0 +1,7 @@
+# whatever libraries we need
+Flask
+scikit-learn
+requests
+numpy
+pandas
+matplotlib
