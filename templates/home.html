@@ -1,3 +1,39 @@
-<h1>
-    Hello World
-</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+</head>
+
+<body style="margin: 0; padding: 0; font-family: 'Open Sans Condensed', sans-serif; background: #f7f7f7;">
+
+  <div style="width: 400px; margin: 80px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    
+    <h1 style="text-align: center; font-family: 'Pacifico', cursive; color: #2c3e50;">Boston House Price Prediction</h1>
+    
+    <!-- Main Input Form -->
+    <form action="{{ url_for('predict') }}" method="post" style="margin-top: 30px;">
+      {% for field in ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'Age', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT'] %}
+        <input type="text" name="{{ field }}" placeholder="{{ field }}" required
+          style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;" />
+      {% endfor %}
+      
+      <button type="submit"
+        style="width: 100%; padding: 12px; background-color: #3498db; color: white; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
+        Predict
+      </button>
+    </form>
+
+    {% if prediction_text %}
+      <p style="margin-top: 20px; text-align: center; font-size: 18px; color: #2c3e50;">
+        {{ prediction_text }}
+      </p>
+    {% endif %}
+  </div>
+
+</body>
+</html>
