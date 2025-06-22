@@ -19,10 +19,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Heroku CLI
-        run: | 
-          curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-
+      # ✅ Sets up Heroku CLI and authenticates
+      - name: Setup Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+        env:
+          HD_DEPLOYMENT_METHOD: none  # ⬅ disables actual deploy from this action
 
 ### ⬇ IMPORTANT PART ⬇ ###
 
