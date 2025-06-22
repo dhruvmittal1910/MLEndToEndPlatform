@@ -21,6 +21,10 @@ jobs:
       
       - name: Install Heroku CLI
         run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      
+      - name: Check Heroku CLI
+        run: heroku --version
+
 ### ⬇ IMPORTANT PART ⬇ ###
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
